@@ -5,9 +5,9 @@ using UnityEngine;
 public class UISpawnFront : MonoBehaviour
 {
     public GameObject uiPrefab; // Assign your UI prefab
-    public float spawnDistance = 1.5f; // Distance in front of the user
-    public float recenterAngleThreshold = 60f; // Angle threshold for recentering
-    public float recenterSpeed = 2f; // Speed at which UI moves to new position
+    public float spawnDistance = 1.5f;
+    public float recenterAngleThreshold = 60f;
+    public float recenterSpeed = 2f;
 
     private GameObject spawnedUI;
     private Transform cameraTransform;
@@ -25,7 +25,7 @@ public class UISpawnFront : MonoBehaviour
         if (spawnedUI != null)
         {
             CheckAndRecenterUI();
-            MoveUIToTarget(); // Smoothly move UI instead of teleporting
+            MoveUIToTarget();
         }
     }
 
@@ -47,7 +47,6 @@ public class UISpawnFront : MonoBehaviour
 
         if (angleDifference > recenterAngleThreshold)
         {
-            Debug.Log("Recentering UI...");
             SetNewUIPosition();
         }
     }
@@ -62,5 +61,14 @@ public class UISpawnFront : MonoBehaviour
     {
         spawnedUI.transform.position = Vector3.Lerp(spawnedUI.transform.position, targetPosition, Time.deltaTime * recenterSpeed);
         spawnedUI.transform.rotation = Quaternion.Slerp(spawnedUI.transform.rotation, targetRotation, Time.deltaTime * recenterSpeed);
+    }
+
+    // PUBLIC FUNCTION TO DESTROY UI (Call this from Unity Inspector)
+    public void DestroyUI()
+    {
+        if (spawnedUI != null)
+        {
+            Destroy(spawnedUI);
+        }
     }
 }
