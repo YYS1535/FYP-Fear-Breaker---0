@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class UISpawnFront : MonoBehaviour
 {
-    public GameObject uiPrefab; // Assign your UI prefab
+    public GameObject uiPanel; // Reference your UI Panel in the scene
     public float spawnDistance = 1.5f;
     public float recenterAngleThreshold = 60f;
     public float recenterSpeed = 2f;
 
-    private GameObject spawnedUI;
     private Transform cameraTransform;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
@@ -17,32 +16,34 @@ public class UISpawnFront : MonoBehaviour
     void Start()
     {
         cameraTransform = Camera.main.transform;
-        SpawnUI();
+
+        if (uiPanel != null)
+        {
+            PositionUI(); // Move the existing UI to the correct position
+        }
     }
 
     void Update()
     {
-        if (spawnedUI != null)
+        if (uiPanel != null)
         {
             CheckAndRecenterUI();
             MoveUIToTarget();
         }
     }
 
-    void SpawnUI()
+    void PositionUI()
     {
-        if (cameraTransform != null && uiPrefab != null)
-        {
-            targetPosition = cameraTransform.position + cameraTransform.forward * spawnDistance;
-            targetRotation = Quaternion.LookRotation(targetPosition - cameraTransform.position, Vector3.up);
+        targetPosition = cameraTransform.position + cameraTransform.forward * spawnDistance;
+        targetRotation = Quaternion.LookRotation(targetPosition - cameraTransform.position, Vector3.up);
 
-            spawnedUI = Instantiate(uiPrefab, targetPosition, targetRotation);
-        }
+        uiPanel.transform.position = targetPosition;
+        uiPanel.transform.rotation = targetRotation;
     }
 
     void CheckAndRecenterUI()
     {
-        Vector3 toUI = (spawnedUI.transform.position - cameraTransform.position).normalized;
+        Vector3 toUI = (uiPanel.transform.position - cameraTransform.position).normalized;
         float angleDifference = Vector3.Angle(cameraTransform.forward, toUI);
 
         if (angleDifference > recenterAngleThreshold)
@@ -59,16 +60,16 @@ public class UISpawnFront : MonoBehaviour
 
     void MoveUIToTarget()
     {
-        spawnedUI.transform.position = Vector3.Lerp(spawnedUI.transform.position, targetPosition, Time.deltaTime * recenterSpeed);
-        spawnedUI.transform.rotation = Quaternion.Slerp(spawnedUI.transform.rotation, targetRotation, Time.deltaTime * recenterSpeed);
+        uiPanel.transform.position = Vector3.Lerp(uiPanel.transform.position, targetPosition, Time.deltaTime * recenterSpeed);
+        uiPanel.transform.rotation = Quaternion.Slerp(uiPanel.transform.rotation, targetRotation, Time.deltaTime * recenterSpeed);
     }
 
-    // PUBLIC FUNCTION TO DESTROY UI (Call this from Unity Inspector)
-    public void DestroyUI()
+    // PUBLIC FUNCTION TO DISABLE UI
+    public void HideUI()
     {
-        if (spawnedUI != null)
+        if (uiPanel != null)
         {
-            Destroy(spawnedUI);
+            uiPanel.SetActive(false);
         }
     }
 }
