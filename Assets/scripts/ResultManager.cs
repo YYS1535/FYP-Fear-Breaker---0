@@ -10,6 +10,7 @@ public class ResultManager : MonoBehaviour
     public static ResultManager Instance;
 
     public TextMeshProUGUI resultText;
+    public GrabbableInteractionTracker[] photoTrackers; // assign in Inspector
 
     void Awake()
     {
@@ -18,21 +19,28 @@ public class ResultManager : MonoBehaviour
 
     public void ShowResults()
     {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Session Complete!");
-        sb.AppendLine("Interaction Count: " + InteractionTracker.Instance.GetInteractionCount());
+        int totalGrabs = 0;
+        float totalGrabTime = 0f;
 
-        foreach (float t in InteractionTracker.Instance.GetInteractionTimes())
+        foreach (var tracker in photoTrackers)
         {
-            sb.AppendLine("Touched at: " + t.ToString("F1") + "s");
+            totalGrabs += tracker.GetGrabCount();
+            totalGrabTime += tracker.GetTotalGrabDuration();
         }
+
+        float sessionTime = Time.timeSinceLevelLoad;
+
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("SESSION RESULTS");
+        sb.AppendLine("Touch Count: " + totalGrabs);
+        sb.AppendLine("Total Interaction Time: " + totalGrabTime.ToString("F1") + "s");
+        sb.AppendLine("Session Duration: " + sessionTime.ToString("F1") + "s");
 
         resultText.text = sb.ToString();
     }
 
     public void ConfirmResult()
     {
-        InteractionTracker.Instance.StartTracking(); // Reset
         UnityEngine.SceneManagement.SceneManager.LoadScene("HomePage");
     }
 }

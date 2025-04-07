@@ -33,7 +33,6 @@ public class SessionManager : MonoBehaviour
         timedUI.SetActive(true);
         quitUI.SetActive(true);
         sessionRunning = true;
-        InteractionTracker.Instance.StartTracking();
         StartCoroutine(SessionTimer());
 
         if (isTimedSession && isTaskSession)
@@ -50,7 +49,6 @@ public class SessionManager : MonoBehaviour
         quitUI.SetActive(true);
         sessionRunning = true;
         TaskListManager.Instance.InitializeTaskSession();
-        InteractionTracker.Instance.StartTracking();
 
         if (isTimedSession && isTaskSession)
         {
