@@ -5,20 +5,23 @@ using Meta.XR.MRUtilityKit;
 
 public class spawnOnTable : MonoBehaviour
 {
-    public GameObject SpawnObject;
-    public float DistanceFromPlayer = 0.5f;
-    private MRUKRoom currentRoom;
-    private bool isRoomReady = false; // Flag to check if MRUK is initialized
+    [Header("Optional Video Players")]
+    public GameObject[] VideoPlayers;
 
-    private void Start()
+    public float ForwardOffset = 0.2f;
+    public float ElementSpacing = 0.25f;
+    public float TablePaddingY = 0.02f;
+
+    private MRUKRoom currentRoom;
+
+    public void TrySpawn()
     {
         if (MRUK.Instance)
         {
             MRUK.Instance.RegisterSceneLoadedCallback(() =>
             {
                 currentRoom = MRUK.Instance.GetCurrentRoom();
-                isRoomReady = true; // Set flag when MRUK is ready
-                Debug.Log("MRUK Room initialized and ready for spawning.");
+                SpawnVideoElements();
             });
         }
         else
@@ -27,12 +30,11 @@ public class spawnOnTable : MonoBehaviour
         }
     }
 
-    // PUBLIC FUNCTION TO SPAWN OBJECT (Call this from Unity Inspector)
-    public void SpawnOnTable()
+    private void SpawnVideoElements()
     {
-        if (!isRoomReady || currentRoom == null)
+        if (currentRoom == null)
         {
-            Debug.LogWarning("MRUK Room is not ready yet! Try again later.");
+            Debug.LogWarning("MRUK Room not ready.");
             return;
         }
 
@@ -46,29 +48,47 @@ public class spawnOnTable : MonoBehaviour
             out var tablePosition,
             out var tableNormal))
         {
-            Vector3 targetPosition = tablePosition + (forwardDirection * DistanceFromPlayer);
-            targetPosition.y = tablePosition.y; // Ensure it stays on the table
+            Collider tableCollider = GetTableColliderAtPosition(tablePosition);
+            Bounds tableBounds = tableCollider != null ? tableCollider.bounds : new Bounds(tablePosition, Vector3.one);
 
-            Quaternion targetRotation = Quaternion.LookRotation(-forwardDirection, tableNormal);
+            Vector3 tableCenter = tableBounds.center;
+            Vector3 tableForward = Vector3.ProjectOnPlane(forwardDirection, Vector3.up).normalized;
+            Vector3 baseSpawnPos = tableCenter + (tableForward * (tableBounds.extents.z - ForwardOffset));
+            float tableTopY = tableBounds.max.y + TablePaddingY;
 
-            // Spawn the object
-            GameObject spawnedObject = Instantiate(SpawnObject, targetPosition, targetRotation);
+            Quaternion rotationToUser = Quaternion.LookRotation(-forwardDirection, Vector3.up);
 
-            // Ensure the object properly interacts with physics
-            Rigidbody rb = spawnedObject.GetComponent<Rigidbody>();
-            if (rb != null)
+            // Spawn optional videos
+            for (int i = 0; i < VideoPlayers.Length; i++)
             {
-                rb.isKinematic = false; // Allow physics simulation
-                rb.useGravity = true; // Ensure it drops correctly onto the table
-            }
-            else
-            {
-                Debug.LogWarning("Spawned object has no Rigidbody! Consider adding one.");
+                if (VideoPlayers[i] == null) continue;
+
+                Vector3 spawnPos = baseSpawnPos - tableForward * (ElementSpacing * (2 - i));
+                spawnPos.y = tableTopY - 0.01f; // Slightly inside the table
+                Instantiate(VideoPlayers[i], spawnPos, rotationToUser);
             }
         }
         else
         {
-            Debug.LogWarning("No table found to spawn the object.");
+            Debug.LogWarning("No suitable table found.");
         }
+    }
+
+    private Collider GetTableColliderAtPosition(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, 0.5f);
+        foreach (Collider col in colliders)
+        {
+            if (col.CompareTag("Table"))
+                return col;
+        }
+        return null;
+    }
+
+    private IEnumerator EnablePhysicsAfterDelay(Rigidbody rb)
+    {
+        yield return new WaitForSeconds(0.2f);
+        rb.isKinematic = false;
+        rb.useGravity = true;
     }
 }

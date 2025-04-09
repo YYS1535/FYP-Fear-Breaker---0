@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class SessionManager : MonoBehaviour
 {
-    public GameObject timedUI, taskUI, quitUI, resultUI;
+    public GameObject timedUI, taskUI, quitUI, resultUI, video1,video2;
     public float timedSessionDuration = 90f;
     public float taskSessionDuration = 60f;
+    public spawnOnTable objectSpawner;
 
     private float sessionTimer;
     private bool isTimedSession, isTaskSession;
@@ -32,7 +33,10 @@ public class SessionManager : MonoBehaviour
         sessionTimer = timedSessionDuration;
         timedUI.SetActive(true);
         quitUI.SetActive(true);
+        if (video1 != null) video1.SetActive(true);
+        if (video2 != null) video2.SetActive(true);
         sessionRunning = true;
+        objectSpawner.TrySpawn();
         StartCoroutine(SessionTimer());
 
         if (isTimedSession && isTaskSession)
@@ -47,7 +51,10 @@ public class SessionManager : MonoBehaviour
         sessionTimer = 0f;
         taskUI.SetActive(true);
         quitUI.SetActive(true);
+        if (video1 != null) video1.SetActive(true);
+        if (video2 != null) video2.SetActive(true);
         sessionRunning = true;
+        objectSpawner.TrySpawn();
         TaskListManager.Instance.InitializeTaskSession();
 
         if (isTimedSession && isTaskSession)
@@ -64,7 +71,13 @@ public class SessionManager : MonoBehaviour
             if (timerText != null)
                 timerText.text = sessionTimer.ToString("F1") + "s";
             if (taskProgressBar != null)
-                taskProgressBar.value = 1f - (sessionTimer / taskSessionDuration);
+            {
+                taskProgressBar.value = (sessionTimer / taskSessionDuration);
+                // Clamp to avoid overshoot
+                taskProgressBar.value = Mathf.Clamp01(taskProgressBar.value);
+            }
+                
+
 
             yield return null;
         }
@@ -80,6 +93,8 @@ public class SessionManager : MonoBehaviour
         taskUI.SetActive(false);
         quitUI.SetActive(false);
         resultUI.SetActive(true);
+        if (video1 != null) video1.SetActive(false);
+        if (video2 != null) video2.SetActive(false);
 
         ResultManager.Instance.ShowResults();
     }
@@ -91,6 +106,8 @@ public class SessionManager : MonoBehaviour
         taskUI.SetActive(false);
         quitUI.SetActive(false);
         resultUI.SetActive(false);
+        if (video1 != null) video1.SetActive(false);
+        if (video2 != null) video2.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene("HomePage");
     }
 

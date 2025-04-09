@@ -62,11 +62,11 @@ public class SpwanFromStart : MonoBehaviour
                 Vector3 tableForward = Vector3.ProjectOnPlane(forwardDirection, Vector3.up).normalized;
                 Vector3 frontCenter = tableCenter + (tableForward * (tableBounds.extents.z - ForwardOffset));
 
-                finalPosition = new Vector3(frontCenter.x, tableBounds.max.y + 0.02f, frontCenter.z); // Ensure it's slightly above
+                finalPosition = new Vector3(frontCenter.x, tableBounds.max.y + 0.05f, frontCenter.z); // Ensure it's slightly above
             }
             else
             {
-                finalPosition = new Vector3(tablePosition.x, tablePosition.y + 0.02f, tablePosition.z);
+                finalPosition = new Vector3(tablePosition.x, tablePosition.y + 0.05f, tablePosition.z);
             }
 
             Quaternion finalRotation = Quaternion.LookRotation(-forwardDirection, Vector3.up);
