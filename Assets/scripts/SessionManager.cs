@@ -6,18 +6,26 @@ using UnityEngine.UI;
 
 public class SessionManager : MonoBehaviour
 {
-    public GameObject timedUI, taskUI, quitUI, resultUI, video1,video2;
+    public static SessionManager Instance;
+    public GameObject timedUI, taskUI, quitUI, resultUI, video1, video2;
     public float timedSessionDuration = 90f;
     public float taskSessionDuration = 60f;
     public spawnOnTable objectSpawner;
 
-    private float sessionTimer;
+    private float countdownTimer;     // for timed session
+    private float taskElapsedTime = 0f;   // for task session
+    public float totalSessionTime = 0f;  // for both sessions and result
+
     private bool isTimedSession, isTaskSession;
     private bool sessionRunning;
 
     public TextMeshProUGUI timerText;
     public Slider taskProgressBar;
 
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         sessionRunning = false;
@@ -25,65 +33,96 @@ public class SessionManager : MonoBehaviour
         timedUI.SetActive(false);
         taskUI.SetActive(false);
         quitUI.SetActive(false);
+        if (video1 != null) video1.SetActive(false);
+        if (video2 != null) video2.SetActive(false);
+
+        if (taskProgressBar != null)
+        {
+            taskProgressBar.minValue = 0f;
+            taskProgressBar.maxValue = taskSessionDuration;
+            taskProgressBar.value = 0f;
+        }
     }
 
     public void StartTimedSession()
     {
         isTimedSession = true;
-        sessionTimer = timedSessionDuration;
+        countdownTimer = timedSessionDuration;
+        totalSessionTime = 0f;
+
         timedUI.SetActive(true);
         quitUI.SetActive(true);
         if (video1 != null) video1.SetActive(true);
         if (video2 != null) video2.SetActive(true);
+
         sessionRunning = true;
         objectSpawner.TrySpawn();
-        StartCoroutine(SessionTimer());
+
+        StartCoroutine(TimedSessionTimer());
 
         if (isTimedSession && isTaskSession)
-        {
             Debug.LogWarning("Both sessions active! This should not happen.");
-        }
     }
 
     public void StartTaskSession()
     {
         isTaskSession = true;
-        sessionTimer = 0f;
+        taskElapsedTime = 0f;
+        totalSessionTime = 0f;
+
         taskUI.SetActive(true);
         quitUI.SetActive(true);
         if (video1 != null) video1.SetActive(true);
         if (video2 != null) video2.SetActive(true);
+
         sessionRunning = true;
-        objectSpawner.TrySpawn();
         TaskListManager.Instance.InitializeTaskSession();
 
+        StartCoroutine(TaskSessionTimer());
+
         if (isTimedSession && isTaskSession)
-        {
             Debug.LogWarning("Both sessions active! This should not happen.");
-        }
     }
 
-    IEnumerator SessionTimer()
+    IEnumerator TimedSessionTimer()
     {
-        while (sessionRunning && sessionTimer > 0)
+        while (sessionRunning && countdownTimer > 0)
         {
-            sessionTimer -= Time.deltaTime;
-            if (timerText != null)
-                timerText.text = sessionTimer.ToString("F1") + "s";
-            if (taskProgressBar != null)
-            {
-                taskProgressBar.value = (sessionTimer / taskSessionDuration);
-                // Clamp to avoid overshoot
-                taskProgressBar.value = Mathf.Clamp01(taskProgressBar.value);
-            }
-                
+            countdownTimer -= Time.deltaTime;
+            totalSessionTime += Time.deltaTime;
 
+            UpdateTimerText(countdownTimer); // countdown format
 
             yield return null;
         }
 
         if (isTimedSession)
             EndSession();
+    }
+
+    IEnumerator TaskSessionTimer()
+    {
+        while (sessionRunning)
+        {
+            taskElapsedTime += Time.deltaTime;
+            totalSessionTime += Time.deltaTime;
+
+            if (taskElapsedTime <= taskSessionDuration && taskProgressBar != null)
+            {
+                taskProgressBar.value = taskElapsedTime;
+            }
+
+            UpdateTimerText(totalSessionTime); // count-up format
+
+            yield return null;
+        }
+    }
+
+    void UpdateTimerText(float time)
+    {
+        int minutes = Mathf.FloorToInt(time / 60f);
+        int seconds = Mathf.FloorToInt(time % 60f);
+        timerText.text = $"{minutes}:{seconds:00}";
     }
 
     public void EndSession()
@@ -93,6 +132,7 @@ public class SessionManager : MonoBehaviour
         taskUI.SetActive(false);
         quitUI.SetActive(false);
         resultUI.SetActive(true);
+
         if (video1 != null) video1.SetActive(false);
         if (video2 != null) video2.SetActive(false);
 
@@ -106,10 +146,12 @@ public class SessionManager : MonoBehaviour
         taskUI.SetActive(false);
         quitUI.SetActive(false);
         resultUI.SetActive(false);
+
         if (video1 != null) video1.SetActive(false);
         if (video2 != null) video2.SetActive(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("HomePage");
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Home Page");
     }
 
-
+    public float GetTotalSessionTime() => totalSessionTime;
 }

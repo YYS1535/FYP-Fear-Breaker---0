@@ -9,7 +9,9 @@ public class ResultManager : MonoBehaviour
 {
     public static ResultManager Instance;
 
-    public TextMeshProUGUI resultText;
+    public TMP_Text touchCountText;
+    public TMP_Text totalTouchTimeText;
+    public TMP_Text sessionDurationText;
     public GrabbableInteractionTracker[] photoTrackers; // assign in Inspector
 
     void Awake()
@@ -19,28 +21,29 @@ public class ResultManager : MonoBehaviour
 
     public void ShowResults()
     {
-        int totalGrabs = 0;
-        float totalGrabTime = 0f;
+        int totalTouch = 0;
+        float totalTouchTime = 0f;
 
         foreach (var tracker in photoTrackers)
         {
-            totalGrabs += tracker.GetGrabCount();
-            totalGrabTime += tracker.GetTotalGrabDuration();
+            totalTouch += tracker.GetTouchCount();
+            totalTouchTime += tracker.GetTotalTouchDuration();
         }
 
-        float sessionTime = Time.timeSinceLevelLoad;
+        // Get accurate session time from SessionManager
+        float sessionTime = SessionManager.Instance.GetTotalSessionTime();
 
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("SESSION RESULTS");
-        sb.AppendLine("Touch Count: " + totalGrabs);
-        sb.AppendLine("Total Interaction Time: " + totalGrabTime.ToString("F1") + "s");
-        sb.AppendLine("Session Duration: " + sessionTime.ToString("F1") + "s");
+        int minutes = Mathf.FloorToInt(sessionTime / 60f);
+        int seconds = Mathf.FloorToInt(sessionTime % 60f);
+        string formattedTime = $"{minutes}:{seconds:00}";
 
-        resultText.text = sb.ToString();
+        touchCountText.text = totalTouch.ToString() + "Times";
+        totalTouchTimeText.text = totalTouchTime.ToString("F1") + "s";
+        sessionDurationText.text = formattedTime;
     }
 
     public void ConfirmResult()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("HomePage");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Home Page");
     }
 }

@@ -1,50 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction;
+using Oculus.Interaction.HandGrab;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GrabbableInteractionTracker : MonoBehaviour
 {
-    private float grabStartTime = 0f;
-    private float totalGrabDuration = 0f;
-    private int grabCount = 0;
-    private bool isBeingGrabbed = false;
-    private bool task2Reported = false; // ensure we call CompleteTask2 only once
+    public GrabInteractable grabInteractable;
+    public HandGrabInteractable handGrabInteractable;
 
-    private OVRGrabbable grabbable;
+    private float grabStartTime;
+    private bool isGrabbed = false;
+
+    private float totalTouchDuration = 0f;
+    private int touchCount = 0;
+
+    private bool task2Completed = false;
 
     void Start()
     {
-        grabbable = GetComponent<OVRGrabbable>();
-    }
-
-    void Update()
-    {
-        if (grabbable != null)
+        if (grabInteractable != null)
         {
-            if (grabbable.isGrabbed && !isBeingGrabbed)
-            {
-                // Grab started
-                isBeingGrabbed = true;
-                grabStartTime = Time.time;
-                grabCount++;
-            }
-            else if (!grabbable.isGrabbed && isBeingGrabbed)
-            {
-                // Grab ended
-                isBeingGrabbed = false;
-                float grabDuration = Time.time - grabStartTime;
-                totalGrabDuration += grabDuration;
+            grabInteractable.WhenSelectingInteractorAdded.Action += OnGrab;
+            grabInteractable.WhenSelectingInteractorRemoved.Action += OnRelease;
+        }
 
-                // Check for task completion (2s total interaction)
-                if (!task2Reported && totalGrabDuration >= 2f)
-                {
-                    TaskListManager.Instance.CompleteTask2();
-                    task2Reported = true;
-                }
-            }
+        if (handGrabInteractable != null)
+        {
+            handGrabInteractable.WhenSelectingInteractorAdded.Action += OnGrab;
+            handGrabInteractable.WhenSelectingInteractorRemoved.Action += OnRelease;
         }
     }
 
-    public int GetGrabCount() => grabCount;
-    public float GetTotalGrabDuration() => totalGrabDuration;
+    private void OnGrab(IInteractorView interactor)
+    {
+        if (!isGrabbed)
+        {
+            grabStartTime = Time.time;
+            touchCount++;
+            isGrabbed = true;
+            TaskListManager.Instance.CompleteTask2();
+            task2Completed = true;
+            Debug.Log("Grab started");
+        }
+    }
+
+    private void OnRelease(IInteractorView interactor)
+    {
+        if (isGrabbed)
+        {
+            float duration = Time.time - grabStartTime;
+            totalTouchDuration += duration;
+
+            Debug.Log($"Grab ended after {duration:F2}s");
+
+            if (!task2Completed && duration >= 1f)
+            {
+                TaskListManager.Instance.CompleteTask2();
+                task2Completed = true;
+                Debug.Log("Task 2 completed!");
+            }
+
+            isGrabbed = false;
+        }
+    }
+
+    // Public getters
+    public int GetTouchCount() => touchCount;
+    public float GetTotalTouchDuration() => totalTouchDuration;
 }
