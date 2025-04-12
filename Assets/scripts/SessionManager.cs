@@ -10,7 +10,6 @@ public class SessionManager : MonoBehaviour
     public GameObject timedUI, taskUI, quitUI, resultUI, video1, video2;
     public float timedSessionDuration = 90f;
     public float taskSessionDuration = 60f;
-    public spawnOnTable objectSpawner;
 
     private float countdownTimer;     // for timed session
     private float taskElapsedTime = 0f;   // for task session
@@ -56,7 +55,6 @@ public class SessionManager : MonoBehaviour
         if (video2 != null) video2.SetActive(true);
 
         sessionRunning = true;
-        objectSpawner.TrySpawn();
 
         StartCoroutine(TimedSessionTimer());
 

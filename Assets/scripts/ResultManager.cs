@@ -12,7 +12,6 @@ public class ResultManager : MonoBehaviour
     public TMP_Text touchCountText;
     public TMP_Text totalTouchTimeText;
     public TMP_Text sessionDurationText;
-    public GrabbableInteractionTracker[] photoTrackers; // assign in Inspector
 
     void Awake()
     {
@@ -21,6 +20,7 @@ public class ResultManager : MonoBehaviour
 
     public void ShowResults()
     {
+        GrabbableInteractionTracker[] photoTrackers = FindObjectsOfType<GrabbableInteractionTracker>();
         int totalTouch = 0;
         float totalTouchTime = 0f;
 
