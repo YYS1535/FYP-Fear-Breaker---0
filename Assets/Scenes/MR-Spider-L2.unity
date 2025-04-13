@@ -1633,6 +1633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba0156cb9eae4e4e932d4e537a65e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTaskConfig: -1
   timedUI: {fileID: 464637060}
   taskUI: {fileID: 1953169740}
   quitUI: {fileID: 1735626299}

@@ -4,8 +4,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Flags]
+public enum TaskType
+{
+    None = 0,
+    WatchVideo = 1 << 0,
+    GrabObject = 1 << 1,
+    StayInRoom = 1 << 2
+}
+
 public class SessionManager : MonoBehaviour
 {
+    public TaskType levelTaskConfig = TaskType.WatchVideo | TaskType.GrabObject | TaskType.StayInRoom;
     public static SessionManager Instance;
     public GameObject timedUI, taskUI, quitUI, resultUI, video1, video2;
     public float timedSessionDuration = 90f;
@@ -74,7 +84,7 @@ public class SessionManager : MonoBehaviour
         if (video2 != null) video2.SetActive(true);
 
         sessionRunning = true;
-        TaskListManager.Instance.InitializeTaskSession();
+        TaskListManager.Instance.InitializeTaskSession(levelTaskConfig);
 
         StartCoroutine(TaskSessionTimer());
 
