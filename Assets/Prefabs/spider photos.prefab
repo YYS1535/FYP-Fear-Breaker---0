@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabInteractable: {fileID: 555033270184132442}
-  handGrabInteractable: {fileID: 0}
+  handGrabInteractable: {fileID: 7689184295745176023}
 --- !u!114 &5772760311785759451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabInteractable: {fileID: 1336651496975235402}
-  handGrabInteractable: {fileID: 0}
+  handGrabInteractable: {fileID: 434048749211629115}
 --- !u!114 &4737228375607632649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabInteractable: {fileID: 244869022908585807}
-  handGrabInteractable: {fileID: 0}
+  handGrabInteractable: {fileID: 2845497511437207371}
 --- !u!114 &8006733727637959572
 MonoBehaviour:
   m_ObjectHideFlags: 0
