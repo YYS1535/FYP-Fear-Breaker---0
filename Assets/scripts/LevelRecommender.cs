@@ -65,23 +65,23 @@ public class LevelRecommender : MonoBehaviour
             case FearType.Spider:
             case FearType.Snake:
                 // 5 level logic
-                if (q1 >= 3) recommendedLevel = 2;
-                if (q2 >= 3) recommendedLevel = 3;
+                if (q1 <= 3) recommendedLevel = 2;
+                if (q2 <= 3) recommendedLevel = 3;
                 if (q3 >= 3) recommendedLevel = 4;
                 if (q3 == 5) recommendedLevel = 5;
                 break;
 
             case FearType.Holes:
-                // e.g., Holes: only 3 levels
-                // Q1 = discomfort, Q2 = visual reaction, Q3 = closeness
-                if (q1 >= 3) recommendedLevel = 2;
-                if (q2 >= 3 || q3 >= 3) recommendedLevel = 3;
+                if (q1 <= 3) recommendedLevel = 2;
+                if (q2 <= 3) recommendedLevel = 2;
+                if (q2 <= 3 || q3 >= 3) recommendedLevel = 3;
                 break;
 
             case FearType.Height:
                 // Similar 3 level logic
-                if (q1 >= 3) recommendedLevel = 2;
-                if (q2 >= 4 || q3 >= 4) recommendedLevel = 3;
+                if (q1 <= 3) recommendedLevel = 2;
+                if (q2 <= 3) recommendedLevel = 2;
+                if (q2 <= 3 || q3 >= 4) recommendedLevel = 3;
                 break;
         }
 

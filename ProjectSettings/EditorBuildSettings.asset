@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MR-SNAKE-L5.unity
     guid: d1a50a0f6a6d81d439f47ea4d858edd6
+  - enabled: 1
+    path: Assets/Scenes/VR-height-Level 1.unity
+    guid: c9f207a012b39ff45a1f5addbc90046e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b955a60f31770b64bbec2ec171060290, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: d3ec35cf1ad962b43ae557429146a799, type: 2}

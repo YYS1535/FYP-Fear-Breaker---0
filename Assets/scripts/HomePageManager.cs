@@ -49,6 +49,37 @@ public class HomePageManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MR-SNAKE-L5");
     }
 
+    //HEIGHT
+    public void StartHeightL1()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-L1");
+    }
+
+    public void StartHeightL2()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-L2");
+    }
+
+    public void StartHeightL3()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-L3");
+    }
+
+    //Pattern of HOLES
+    public void StartPOHoleL1()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-L1");
+    }
+    public void StartPOHoleL2()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-L2");
+    }
+    public void StartPOHoleL3()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-L3");
+    }
+
+
     public void QuitApp()
 {
     Debug.Log("Attempting to quit the app...");

@@ -28,6 +28,14 @@ public class SessionManager : MonoBehaviour
     private bool isTimedSession, isTaskSession;
     private bool sessionRunning;
 
+    public AudioSource breathingAudio;
+    public AudioSource guidanceAudio1;
+    public AudioSource guidanceAudio2;
+    public bool muteVoiceGuidance = false; // can be toggled via UI button
+
+    private Coroutine voiceRoutine;
+    private string currentSceneName;
+
     public TextMeshProUGUI timerText;
     public Slider taskProgressBar;
 
@@ -37,6 +45,7 @@ public class SessionManager : MonoBehaviour
     }
     void Start()
     {
+        currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         sessionRunning = false;
         resultUI.SetActive(false);
         timedUI.SetActive(false);
@@ -64,6 +73,11 @@ public class SessionManager : MonoBehaviour
         if (video1 != null) video1.SetActive(true);
         if (video2 != null) video2.SetActive(true);
 
+        if (!currentSceneName.Contains("L1") && !muteVoiceGuidance)
+        {
+            voiceRoutine = StartCoroutine(PlayVoiceGuidance());
+        }
+
         sessionRunning = true;
 
         StartCoroutine(TimedSessionTimer());
@@ -82,6 +96,11 @@ public class SessionManager : MonoBehaviour
         quitUI.SetActive(true);
         if (video1 != null) video1.SetActive(true);
         if (video2 != null) video2.SetActive(true);
+
+        if (!currentSceneName.Contains("L1") && !muteVoiceGuidance)
+        {
+            voiceRoutine = StartCoroutine(PlayVoiceGuidance());
+        }
 
         sessionRunning = true;
         TaskListManager.Instance.InitializeTaskSession(levelTaskConfig);
@@ -133,8 +152,35 @@ public class SessionManager : MonoBehaviour
         timerText.text = $"{minutes}:{seconds:00}";
     }
 
+    IEnumerator PlayVoiceGuidance()
+    {
+        yield return new WaitForSeconds(3f);
+        if (breathingAudio != null) breathingAudio.Play();
+
+        yield return new WaitForSeconds(62f); // total = 1:05
+        if (Random.value < 0.5f)
+            if (guidanceAudio1 != null) guidanceAudio1.Play();
+            else
+            if (guidanceAudio2 != null) guidanceAudio2.Play();
+
+        yield return new WaitForSeconds(55f); // total = 2:00
+        if (Random.value < 0.5f)
+            if (guidanceAudio1 != null && !guidanceAudio1.isPlaying) guidanceAudio1.Play();
+            else
+            if (guidanceAudio2 != null && !guidanceAudio2.isPlaying) guidanceAudio2.Play();
+    }
+
+    public void ToggleVoiceGuidance(bool isMuted)
+    {
+        muteVoiceGuidance = isMuted;
+    }
+
     public void EndSession()
     {
+        if (voiceRoutine != null) StopCoroutine(voiceRoutine);
+        if (breathingAudio != null) breathingAudio.Stop();
+        if (guidanceAudio1 != null) guidanceAudio1.Stop();
+        if (guidanceAudio2 != null) guidanceAudio2.Stop();
         sessionRunning = false;
         timedUI.SetActive(false);
         taskUI.SetActive(false);
@@ -149,6 +195,10 @@ public class SessionManager : MonoBehaviour
 
     public void EarlyQuit()
     {
+        if (voiceRoutine != null) StopCoroutine(voiceRoutine);
+        if (breathingAudio != null) breathingAudio.Stop();
+        if (guidanceAudio1 != null) guidanceAudio1.Stop();
+        if (guidanceAudio2 != null) guidanceAudio2.Stop();
         sessionRunning = false;
         timedUI.SetActive(false);
         taskUI.SetActive(false);
