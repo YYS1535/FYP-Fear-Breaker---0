@@ -72857,9 +72857,9 @@ MonoBehaviour:
   timedSessionDuration: 90
   taskSessionDuration: 60
   totalSessionTime: 0
-  breathingAudio: {fileID: 0}
-  guidanceAudio1: {fileID: 0}
-  guidanceAudio2: {fileID: 0}
+  breathingAudio: {fileID: 439791582}
+  guidanceAudio1: {fileID: 589665186}
+  guidanceAudio2: {fileID: 1273494695}
   muteVoiceGuidance: 0
   timerText: {fileID: 292796171}
   taskProgressBar: {fileID: 1247299999}
