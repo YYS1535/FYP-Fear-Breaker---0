@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371dbee8a94872248beca7e797933b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.2
+  duration: 0.1
   amplitude: 0.5
   frequency: 0.8
   grabInteractable: {fileID: 555033270184132442}
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371dbee8a94872248beca7e797933b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.2
+  duration: 0.1
   amplitude: 0.5
   frequency: 0.8
   grabInteractable: {fileID: 1336651496975235402}
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371dbee8a94872248beca7e797933b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.2
+  duration: 0.1
   amplitude: 0.5
   frequency: 0.8
   grabInteractable: {fileID: 244869022908585807}

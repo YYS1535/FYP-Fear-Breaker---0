@@ -4,11 +4,17 @@ using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GrabbableInteractionTracker : MonoBehaviour
 {
     public GrabInteractable grabInteractable;
     public HandGrabInteractable handGrabInteractable;
+
+    [Header("Optional Audio Settings")]
+    public bool enableGrabSound = false;
+    public AudioSource grabAudioSource;
+    public AudioClip grabSound;
 
     private float grabStartTime;
     private bool isGrabbed = false;
@@ -40,8 +46,20 @@ public class GrabbableInteractionTracker : MonoBehaviour
             grabStartTime = Time.time;
             touchCount++;
             isGrabbed = true;
-            TaskListManager.Instance.CompleteTask2();
-            task2Completed = true;
+
+            if (SceneManager.GetActiveScene().name != "VR-height-Level 3" && task2Completed == false)
+            {
+                TaskListManager.Instance.CompleteTask2();
+                task2Completed = true;
+                Debug.Log("Task 2 completed from OnGrab");
+            }
+
+            // Play cute sound if enabled
+            if (enableGrabSound && grabAudioSource != null && grabSound != null)
+            {
+                grabAudioSource.PlayOneShot(grabSound);
+            }
+
             Debug.Log("Grab started");
         }
     }
@@ -54,13 +72,6 @@ public class GrabbableInteractionTracker : MonoBehaviour
             totalTouchDuration += duration;
 
             Debug.Log($"Grab ended after {duration:F2}s");
-
-            if (!task2Completed && duration >= 1f)
-            {
-                TaskListManager.Instance.CompleteTask2();
-                task2Completed = true;
-                Debug.Log("Task 2 completed!");
-            }
 
             isGrabbed = false;
         }
