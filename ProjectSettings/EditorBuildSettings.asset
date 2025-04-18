@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MR-SNAKE-L2.unity
     guid: 591ca68e7db53f8438172804e5ad8545
   - enabled: 1
-    path: Assets/Scenes/MR-SNAKE-L3.unity
+    path: Assets/Scenes/MR-Snake-L3.unity
     guid: e367f579434547248b05256f8a367376
   - enabled: 1
     path: Assets/Scenes/MR-SNAKE-L4.unity

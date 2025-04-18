@@ -38,14 +38,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaCutout: 0.072
+    - _AlphaCutout: 0.21
     - _AppendMoreFins: 0
     - _Density: 10
     - _DrawOrigPolygon: 1
     - _FaceNormalFactor: 0.2
     - _FaceViewProdThresh: 1
     - _FinJointNum: 2
-    - _FinLength: 0.0005
+    - _FinLength: 0.01
     - _Metallic: 0
     - _NormalFactor: 0.196
     - _NormalScale: 0.5
@@ -55,13 +55,13 @@ Material:
     - _RimLightPower: 4
     - _ShadowExtraBias: -0.3
     - _Smoothness: 0.4
-    - _TessFactor: 4.86
+    - _TessFactor: 6.12
     - _TessMaxDist: 5
     - _TessMinDist: 0.1
     m_Colors:
     - _AmbientColor: {r: 0.037320513, g: 0.09325546, b: 0.16037738, a: 1}
     - _BaseColor: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
-    - _BaseMove: {r: 0, g: -0.4, b: 0, a: 3}
+    - _BaseMove: {r: 0, g: 0, b: 0, a: 3}
     - _WindFreq: {r: 1, g: 0.4, b: 0.2, a: 1}
     - _WindMove: {r: 0.2, g: 0.1, b: 0.1, a: 1}
   m_BuildTextureStacks: []
