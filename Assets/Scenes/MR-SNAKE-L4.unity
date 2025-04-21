@@ -37691,7 +37691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121fe2a4085210e40818b96bd782c969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnObject: {fileID: 8749029981888455365, guid: 521d5f2ce79f1364e97692c71dc80a97, type: 3}
+  SpawnObject: {fileID: 6176474134880951917, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
   ForwardOffset: 0.2
 --- !u!1 &1422167766
 GameObject:
@@ -41446,7 +41446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2296141232796561049, guid: 37c47f9928e3fef4bb9a9ffaafab5526, type: 3}
       propertyPath: hideMesh
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2296141232796561049, guid: 37c47f9928e3fef4bb9a9ffaafab5526, type: 3}
       propertyPath: Colliders
