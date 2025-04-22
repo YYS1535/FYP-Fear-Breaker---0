@@ -77,15 +77,20 @@ public class TaskListManager : MonoBehaviour
 
     void CheckAllTasksComplete()
     {
+        Debug.Log("Checking if all tasks are complete...");
+
         bool allComplete = true;
 
         if ((activeTasks & TaskType.WatchVideo) != 0) allComplete &= task1Complete;
         if ((activeTasks & TaskType.GrabObject) != 0) allComplete &= task2Complete;
         if ((activeTasks & TaskType.StayInRoom) != 0) allComplete &= task3Complete;
 
+        Debug.Log($"Task1: {task1Complete}, Task2: {task2Complete}, Task3: {task3Complete}, All Complete: {allComplete}");
+
         if (allComplete)
         {
             doneButton.SetActive(true);
+            Debug.Log("All tasks complete! Showing Done button.");
         }
     }
 }

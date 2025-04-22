@@ -5,8 +5,12 @@ using Meta.XR.MRUtilityKit;
 
 public class SpwanFromStart : MonoBehaviour
 {
-    public GameObject SpawnObject;
-    public float ForwardOffset = 0.2f; // Distance from table center towards player
+    [Header("Spawn Settings")]
+    public bool SpawnMultipleObjects = false;
+    public GameObject[] SpawnObjects; // For multiple object support
+    public GameObject SingleSpawnObject; // For levels with only 1 object
+    public float ForwardOffset = 0.2f;
+
     private MRUKRoom currentRoom;
     private bool isRoomReady = false;
 
@@ -31,7 +35,7 @@ public class SpwanFromStart : MonoBehaviour
     {
         if (!isRoomReady || currentRoom == null)
         {
-            Debug.LogWarning("MRUK Room is not ready yet! Try again later.");
+            Debug.LogWarning("MRUK Room not ready!");
             return;
         }
 
@@ -45,58 +49,56 @@ public class SpwanFromStart : MonoBehaviour
             out var tablePosition,
             out var tableNormal))
         {
-            // Detect table bounds
             Collider tableCollider = GetTableColliderAtPosition(tablePosition);
             if (tableCollider == null)
             {
-                Debug.LogWarning("Table collider not found! Using default position.");
+                Debug.LogWarning("No table collider found!");
             }
 
-            Vector3 finalPosition;
-            if (tableCollider != null)
+            Bounds tableBounds = tableCollider?.bounds ?? new Bounds(tablePosition, new Vector3(0.5f, 0.1f, 0.5f));
+            Vector3 tableCenter = tableBounds.center;
+            Vector3 tableForward = Vector3.ProjectOnPlane(forwardDirection, Vector3.up).normalized;
+            Vector3 basePosition = tableCenter + (tableForward * (tableBounds.extents.z - ForwardOffset));
+            basePosition.y = tableBounds.max.y + 0.05f;
+
+            if (SpawnMultipleObjects && SpawnObjects.Length > 0)
             {
-                Bounds tableBounds = tableCollider.bounds;
+                float spacing = 0.15f; // horizontal spacing between objects
 
-                // Find front center of the table based on the player's direction
-                Vector3 tableCenter = tableBounds.center;
-                Vector3 tableForward = Vector3.ProjectOnPlane(forwardDirection, Vector3.up).normalized;
-                Vector3 frontCenter = tableCenter + (tableForward * (tableBounds.extents.z - ForwardOffset));
-
-                finalPosition = new Vector3(frontCenter.x, tableBounds.max.y + 0.05f, frontCenter.z); // Ensure it's slightly above
+                for (int i = 0; i < SpawnObjects.Length; i++)
+                {
+                    Vector3 offset = Vector3.right * ((i - (SpawnObjects.Length - 1) / 2.0f) * spacing);
+                    SpawnObjectAtPosition(SpawnObjects[i], basePosition + offset, -forwardDirection);
+                }
             }
-            else
+            else if (SingleSpawnObject != null)
             {
-                finalPosition = new Vector3(tablePosition.x, tablePosition.y + 0.05f, tablePosition.z);
-            }
-
-            Quaternion finalRotation = Quaternion.LookRotation(-forwardDirection, Vector3.up);
-
-            // Check for overlapping objects before spawning
-            Collider[] colliders = Physics.OverlapSphere(finalPosition, 0.1f);
-            if (colliders.Length > 0)
-            {
-                Debug.LogWarning("Spawn position is occupied! Adjusting...");
-                finalPosition += Vector3.up * 0.1f; // Move slightly up to avoid overlap
-            }
-
-            // Spawn the object
-            GameObject spawnedObject = Instantiate(SpawnObject, finalPosition, finalRotation);
-
-            // Disable Rigidbody initially to prevent premature physics activation
-            Rigidbody rb = spawnedObject.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.isKinematic = true; // Temporarily disable physics
-                StartCoroutine(EnablePhysicsAfterDelay(rb));
-            }
-            else
-            {
-                Debug.LogWarning("Spawned object has no Rigidbody! Consider adding one.");
+                SpawnObjectAtPosition(SingleSpawnObject, basePosition, -forwardDirection);
             }
         }
         else
         {
-            Debug.LogWarning("No table found to spawn the object.");
+            Debug.LogWarning("No table surface found.");
+        }
+    }
+
+    private void SpawnObjectAtPosition(GameObject prefab, Vector3 position, Vector3 lookDirection)
+    {
+        Quaternion rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+        Collider[] colliders = Physics.OverlapSphere(position, 0.1f);
+
+        if (colliders.Length > 0)
+        {
+            position += Vector3.up * 0.1f;
+        }
+
+        GameObject obj = Instantiate(prefab, position, rotation);
+
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            StartCoroutine(EnablePhysicsAfterDelay(rb));
         }
     }
 
@@ -105,10 +107,8 @@ public class SpwanFromStart : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(position, 0.5f);
         foreach (Collider col in colliders)
         {
-            if (col.CompareTag("Table")) // Ensure your table has the tag "Table"
-            {
+            if (col.CompareTag("Table"))
                 return col;
-            }
         }
         return null;
     }

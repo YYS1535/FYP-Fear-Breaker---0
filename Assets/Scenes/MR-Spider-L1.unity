@@ -30965,7 +30965,7 @@ RectTransform:
   m_Father: {fileID: 996964386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -39854,7 +39854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121fe2a4085210e40818b96bd782c969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnObject: {fileID: 2333281661405947197, guid: 83c6fd7d4abcc234f9812f7cebf11562, type: 3}
+  SpawnMultipleObjects: 0
+  SpawnObjects: []
+  SingleSpawnObject: {fileID: 2333281661405947197, guid: 83c6fd7d4abcc234f9812f7cebf11562, type: 3}
   ForwardOffset: 0.1
 --- !u!1 &1422167766
 GameObject:
@@ -43410,7 +43412,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583553707}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: b577a06d8fe669b48a69b0c0c440d8f5, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 4700d8c7348688848a41814594b38d22, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -53103,7 +53105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1953169741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -57594,7 +57596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {x: 0, y: 0, z: 0}
-  _size: {x: 1105.78, y: 825.83, z: 10.3}
+  _size: {x: 1248.81, y: 1242.2, z: 10.3}
 --- !u!114 &2129076061
 MonoBehaviour:
   m_ObjectHideFlags: 0

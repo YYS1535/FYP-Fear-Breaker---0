@@ -37534,7 +37534,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121fe2a4085210e40818b96bd782c969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnObject: {fileID: 4338081859826777431, guid: b6ee0c9be6a2ff343bff4099ba800ac3, type: 3}
+  SpawnMultipleObjects: 0
+  SpawnObjects: []
+  SingleSpawnObject: {fileID: 518423084508214376, guid: 57f0d446d388678459beb90ab6a2be5c, type: 3}
   ForwardOffset: 0.2
 --- !u!1 &1422167766
 GameObject:

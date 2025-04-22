@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba0156cb9eae4e4e932d4e537a65e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTaskConfig: -1
+  levelTaskConfig: 6
   timedUI: {fileID: 464637060}
   taskUI: {fileID: 1953169740}
   quitUI: {fileID: 1735626299}
@@ -37759,7 +37759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121fe2a4085210e40818b96bd782c969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnObject: {fileID: 1791471393935333870, guid: 40199d45b1d03f448a3870a71ca19f53, type: 3}
+  SpawnMultipleObjects: 0
+  SpawnObjects: []
+  SingleSpawnObject: {fileID: 8451158066236174428, guid: 361a300e60ee63847bdadab4686bcfc8, type: 3}
   ForwardOffset: 0.2
 --- !u!1 &1422167766
 GameObject:

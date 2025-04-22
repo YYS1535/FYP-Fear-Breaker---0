@@ -12,5 +12,9 @@ public class SpiderWalker : MonoBehaviour
 
         // Turn slowly to create a circular path
         transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+
+        Vector3 currentRotation = transform.eulerAngles;
+        currentRotation.z = 0;
+        transform.eulerAngles = currentRotation;
     }
 }

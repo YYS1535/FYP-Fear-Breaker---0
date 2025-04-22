@@ -10,7 +10,12 @@ public class TarantulaWalker : MonoBehaviour
         // Move forward
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 
-        // Turn slowly to create a circular path
+        // Turn slowly (Y axis)
         transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+
+        // Lock Z rotation to 0 (preserve only X and Y rotation)
+        Vector3 currentRotation = transform.eulerAngles;
+        currentRotation.z = 0;
+        transform.eulerAngles = currentRotation;
     }
 }

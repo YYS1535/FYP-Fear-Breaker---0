@@ -174,6 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabInteractable: {fileID: 555033270184132442}
   handGrabInteractable: {fileID: 7689184295745176023}
+  enableGrabSound: 0
+  grabAudioSource: {fileID: 0}
+  grabSound: {fileID: 0}
 --- !u!114 &5772760311785759451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +450,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabInteractable: {fileID: 1336651496975235402}
   handGrabInteractable: {fileID: 434048749211629115}
+  enableGrabSound: 0
+  grabAudioSource: {fileID: 0}
+  grabSound: {fileID: 0}
 --- !u!114 &4737228375607632649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,6 +599,7 @@ GameObject:
   - component: {fileID: 713735219114941691}
   - component: {fileID: 9118834303105011722}
   - component: {fileID: 2231643195700173641}
+  - component: {fileID: 525823308870820418}
   m_Layer: 0
   m_Name: Photo holder-1
   m_TagString: Untagged
@@ -715,6 +722,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &525823308870820418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481752898066798965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b769dec9f9bce344bc76859ae315b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallThreshold: -1
+  checkInterval: 1
 --- !u!1 &5629887240429661064
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +832,7 @@ GameObject:
   - component: {fileID: 7949853911224843908}
   - component: {fileID: 5493873724420044447}
   - component: {fileID: 1925585809569376666}
+  - component: {fileID: 6591082048307793440}
   m_Layer: 0
   m_Name: Photo holder-3
   m_TagString: Untagged
@@ -933,6 +955,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6591082048307793440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5671613001356896034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b769dec9f9bce344bc76859ae315b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallThreshold: -1
+  checkInterval: 1
 --- !u!1 &5806020491278267039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,6 +1181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabInteractable: {fileID: 244869022908585807}
   handGrabInteractable: {fileID: 2845497511437207371}
+  enableGrabSound: 0
+  grabAudioSource: {fileID: 0}
+  grabSound: {fileID: 0}
 --- !u!114 &8006733727637959572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,6 +1213,7 @@ GameObject:
   - component: {fileID: 6695475696782066851}
   - component: {fileID: 6763896716292957403}
   - component: {fileID: 1486446323448935653}
+  - component: {fileID: 1828846991042154675}
   m_Layer: 0
   m_Name: Photo holder-2
   m_TagString: Untagged
@@ -1296,3 +1336,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1828846991042154675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7608137895661521566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b769dec9f9bce344bc76859ae315b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallThreshold: -1
+  checkInterval: 1
