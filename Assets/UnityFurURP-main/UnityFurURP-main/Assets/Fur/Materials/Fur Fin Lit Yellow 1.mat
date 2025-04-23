@@ -114,7 +114,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Density: 0.1
+    - _Density: 10
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DrawOrigPolygon: 1
@@ -122,7 +122,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _FaceNormalFactor: 0.2
-    - _FaceViewProdThresh: 0.693
+    - _FaceViewProdThresh: 1
     - _FinJointNum: 2
     - _FinLength: 0.0005
     - _GlossMapScale: 0

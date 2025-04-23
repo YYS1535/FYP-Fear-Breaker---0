@@ -713,17 +713,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 263111297197894963, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d9380bb7d5fb174e9a10f0032d1fb7d, type: 2}
     - target: {fileID: 851485952984649423, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 851485952984649423, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 851485952984649423, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 851485952984649423, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -733,6 +737,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2240669705313125342, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d9380bb7d5fb174e9a10f0032d1fb7d, type: 2}
     - target: {fileID: 3018932201254872423, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -741,6 +749,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.099
       objectReference: {fileID: 0}
+    - target: {fileID: 3160930364729674551, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d9380bb7d5fb174e9a10f0032d1fb7d, type: 2}
     - target: {fileID: 3934182435153958521, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
