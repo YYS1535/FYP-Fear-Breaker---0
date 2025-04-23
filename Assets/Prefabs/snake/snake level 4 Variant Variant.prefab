@@ -714,6 +714,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 263111297197894963, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -300906262758008212, guid: 0c3dded37e00aa249a7e8475aec72de1, type: 3}
+    - target: {fileID: 263111297197894963, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0d9380bb7d5fb174e9a10f0032d1fb7d, type: 2}
@@ -804,6 +808,18 @@ PrefabInstance:
     - target: {fileID: 6570784814046429291, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670703827926931945, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
+      propertyPath: moveSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670703827926931945, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
+      propertyPath: switchDistance
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670703827926931945, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
+      propertyPath: transitionDelay
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 6990214589620265059, guid: ba3f8a70c480d9a449915f6fa51fded9, type: 3}
       propertyPath: m_IsActive
