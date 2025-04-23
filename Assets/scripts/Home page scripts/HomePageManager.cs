@@ -52,31 +52,31 @@ public class HomePageManager : MonoBehaviour
     //HEIGHT
     public void StartHeightL1()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-L1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-Level 1");
     }
 
     public void StartHeightL2()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-L2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-Level 2");
     }
 
     public void StartHeightL3()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-L3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-height-Level 3");
     }
 
     //Pattern of HOLES
     public void StartPOHoleL1()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-L1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-Level 1");
     }
     public void StartPOHoleL2()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-L2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-Level 2");
     }
     public void StartPOHoleL3()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-L3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VR-POHoles-Level 3");
     }
 
 
