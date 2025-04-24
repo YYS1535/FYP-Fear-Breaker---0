@@ -37784,7 +37784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnMultipleObjects: 0
   SpawnObjects: []
-  SingleSpawnObject: {fileID: 8899896200037287282, guid: 4a0a442acdf4d5541b0033b9d99f93fd, type: 3}
+  SingleSpawnObject: {fileID: 2327919207813056909, guid: 708c19c0db4d74744902f2094deb91d7, type: 3}
   ForwardOffset: 0.2
 --- !u!1 &1422167766
 GameObject:
