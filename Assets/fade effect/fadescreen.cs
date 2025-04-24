@@ -8,8 +8,8 @@ public class fadescreen : MonoBehaviour
     public float fadeDuration = 2;
     public Color fadeColor;
     private Renderer rend;
+    public GameObject gameObject;
 
-    // Start is called before the first frame update
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -20,11 +20,13 @@ public class fadescreen : MonoBehaviour
     public void FadeIn()
     {
         Fade(1, 0);
+        gameObject.SetActive(false);
     }
 
     public void FadeOut()
     {
         Fade(0, 1);
+        gameObject.SetActive(false);
     }
 
     public void Fade(float alphaIn, float alphaOut)
@@ -39,13 +41,13 @@ public class fadescreen : MonoBehaviour
         {
             Color newColor = fadeColor;
             newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeDuration);
-
             rend.material.SetColor("_Color", newColor);
 
             timer += Time.deltaTime;
             yield return null;
         }
 
+        // Final color set
         Color newColor2 = fadeColor;
         newColor2.a = alphaOut;
         rend.material.SetColor("_Color", newColor2);
