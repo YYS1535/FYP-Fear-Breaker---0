@@ -163,6 +163,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9080202225642334950}
     m_Modifications:
+    - target: {fileID: 1670910121675143133, guid: 4e2566506bd0f7241a1951ccf40396b5, type: 3}
+      propertyPath: _rigidbody
+      value: 
+      objectReference: {fileID: 1610448273712401935}
     - target: {fileID: 2496153800426738488, guid: 4e2566506bd0f7241a1951ccf40396b5, type: 3}
       propertyPath: m_Name
       value: snakelevel 3 Variant
@@ -218,6 +222,14 @@ PrefabInstance:
     - target: {fileID: 3021860394141288834, guid: 4e2566506bd0f7241a1951ccf40396b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305334527819451627, guid: 4e2566506bd0f7241a1951ccf40396b5, type: 3}
+      propertyPath: _rigidbody
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7656669689949184347, guid: 4e2566506bd0f7241a1951ccf40396b5, type: 3}
+      propertyPath: _rigidbody
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080215521176313634, guid: 4e2566506bd0f7241a1951ccf40396b5, type: 3}

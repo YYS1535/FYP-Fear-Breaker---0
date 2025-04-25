@@ -30,7 +30,6 @@ public class SnakeSwitcher : MonoBehaviour
     {
         if (!hasSwitchedToTransition)
         {
-            // Move consistently in the saved direction
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
 
             float walked = Vector3.Distance(startPos, transform.position);
