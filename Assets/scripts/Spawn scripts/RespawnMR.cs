@@ -8,7 +8,7 @@ public class RespawnMR : MonoBehaviour
     private Quaternion initialRotation;
 
     public float fallThreshold = -1f;
-    public float checkInterval = 1f; // Check every 1 second
+    public float checkInterval = 1f; 
 
     private void Start()
     {
@@ -29,11 +29,9 @@ public class RespawnMR : MonoBehaviour
 
     void Respawn()
     {
-        // Reset position and rotation
         transform.position = initialPosition;
         transform.rotation = initialRotation;
 
-        // Optional: Reset velocity if Rigidbody exists
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
