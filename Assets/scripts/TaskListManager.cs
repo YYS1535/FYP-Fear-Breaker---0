@@ -12,6 +12,7 @@ public class TaskListManager : MonoBehaviour
     public GameObject task1Text, task2Text, task3Text;
     public GameObject doneButton;
     public float requiredTimeInRoom = 60f;
+    public AudioSource taskCompleteSound;
 
     private float timeInRoom = 0f;
     private bool task1Complete = false;//watch video
@@ -89,6 +90,10 @@ public class TaskListManager : MonoBehaviour
 
         if (allComplete)
         {
+            if (taskCompleteSound != null)
+            {
+                taskCompleteSound.Play();
+            }
             doneButton.SetActive(true);
             Debug.Log("All tasks complete! Showing Done button.");
         }
