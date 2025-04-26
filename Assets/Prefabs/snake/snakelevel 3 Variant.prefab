@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7471328531196648716, guid: 762cb7166577cc146bd34d77e72e5aaf, type: 3}
+      propertyPath: fallThreshold
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2526365089769675420, guid: 762cb7166577cc146bd34d77e72e5aaf, type: 3}
     m_RemovedGameObjects: []

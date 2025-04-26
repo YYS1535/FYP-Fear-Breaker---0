@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8700076801166133503}
   - component: {fileID: 4392237413623714244}
   - component: {fileID: 3817754953552948854}
+  - component: {fileID: 5319597376551699448}
   m_Layer: 0
   m_Name: ISDK_HandGrabInteraction
   m_TagString: Untagged
@@ -235,6 +236,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5319597376551699448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448322762817949817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371dbee8a94872248beca7e797933b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+  amplitude: 0.5
+  frequency: 0.4
+  grabInteractable: {fileID: 8700076801166133503}
 --- !u!1 &4395938885329236056
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +751,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cobralevel5 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1422730900511129889, guid: 4ac40e5263dd6b1469599c705efe3d77, type: 3}
+      propertyPath: switchDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5424114812128870076, guid: 4ac40e5263dd6b1469599c705efe3d77, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -806,6 +827,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 778452727472160622, guid: 4ac40e5263dd6b1469599c705efe3d77, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3616968998736939169}
+    - targetCorrespondingSourceObject: {fileID: 778452727472160622, guid: 4ac40e5263dd6b1469599c705efe3d77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2369230899938097049}
     - targetCorrespondingSourceObject: {fileID: 8297259494482493756, guid: 4ac40e5263dd6b1469599c705efe3d77, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2969911460825917039}
@@ -848,6 +872,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2369230899938097049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137607335388765633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b769dec9f9bce344bc76859ae315b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallThreshold: 0.2
+  checkInterval: 1
 --- !u!4 &1218661941761136800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1580068499527924239, guid: 4ac40e5263dd6b1469599c705efe3d77, type: 3}
