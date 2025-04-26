@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 6701065185671933560}
   - component: {fileID: 6415234585759031022}
   - component: {fileID: 8612065424358066433}
+  - component: {fileID: 7763965618602937409}
   m_Layer: 0
   m_Name: ISDK_HandGrabInteraction
   m_TagString: Untagged
@@ -487,6 +488,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7763965618602937409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8516919898137710748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371dbee8a94872248beca7e797933b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+  amplitude: 0.5
+  frequency: 0.4
+  grabInteractable: {fileID: 6701065185671933560}
 --- !u!1001 &1464058610386448380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -595,7 +612,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f5b47323cdc5a9d459ced7d9d67355e5, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3460059611616463863, guid: d1ed8b9cfe9057d43abf465c38f71088, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6677180542921896448, guid: d1ed8b9cfe9057d43abf465c38f71088, type: 3}
@@ -707,5 +725,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 17.62557, y: 32.5791, z: 83.96579}
-  m_Center: {x: 1.3907906, y: 13.932917, z: 85.421364}
+  m_Size: {x: 43.207973, y: 32.5791, z: 83.96578}
+  m_Center: {x: 0.93600094, y: 13.932917, z: 85.421364}
