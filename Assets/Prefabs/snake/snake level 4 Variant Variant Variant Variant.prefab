@@ -108,7 +108,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7255395677426965912, guid: f876cd4f8d3819647afc57255988f91f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1939991908884273460}
+    - targetCorrespondingSourceObject: {fileID: 8440183368740276936, guid: f876cd4f8d3819647afc57255988f91f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2392135386913136488}
   m_SourcePrefab: {fileID: 100100000, guid: f876cd4f8d3819647afc57255988f91f, type: 3}
+--- !u!114 &1193784560970119787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1850771651283498993, guid: f876cd4f8d3819647afc57255988f91f, type: 3}
+  m_PrefabInstance: {fileID: 666092636966587802}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944115561764816722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7894309134216318978 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7255395677426965912, guid: f876cd4f8d3819647afc57255988f91f, type: 3}
@@ -126,5 +140,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b769dec9f9bce344bc76859ae315b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallThreshold: 0.5
+  fallThreshold: 0.06
   checkInterval: 1
+--- !u!1 &8944115561764816722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8440183368740276936, guid: f876cd4f8d3819647afc57255988f91f, type: 3}
+  m_PrefabInstance: {fileID: 666092636966587802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2392135386913136488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944115561764816722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371dbee8a94872248beca7e797933b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+  amplitude: 0.5
+  frequency: 0.4
+  grabInteractable: {fileID: 1193784560970119787}

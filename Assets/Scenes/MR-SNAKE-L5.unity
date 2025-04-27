@@ -40322,7 +40322,6 @@ MonoBehaviour:
   SpawnObjects:
   - {fileID: 1137607335388765633, guid: 7c164512e6fecd94d99cab05de393d5b, type: 3}
   - {fileID: 181493778422414206, guid: be5473e45a9b1c14d8f561acbd612894, type: 3}
-  - {fileID: 2683447398343434451, guid: d1c3ed49e7a14e84fac9de58f0c2ab88, type: 3}
   - {fileID: 3674539772529070533, guid: cb30b8ec2a095054e9d35067aa7f114c, type: 3}
   SingleSpawnObject: {fileID: 0}
   ForwardOffset: 0.2
