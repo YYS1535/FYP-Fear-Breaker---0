@@ -38431,6 +38431,7 @@ MonoBehaviour:
   - {fileID: 9194430960430035983, guid: a987f8dad49db11499f58cd91b2055d8, type: 3}
   - {fileID: 8442839971526598818, guid: 0ba234f7310ba8841aa04c1fbf68857e, type: 3}
   - {fileID: 7605944587819703453, guid: 95ab831cb99c5f345a236f6286df87fc, type: 3}
+  - {fileID: 3117324567176866675, guid: 687bbee47c391554d80f822fe990d2ec, type: 3}
   SingleSpawnObject: {fileID: 0}
   ForwardOffset: 0.2
 --- !u!1 &1422167766
