@@ -37847,7 +37847,7 @@ MonoBehaviour:
   SpawnMultipleObjects: 1
   SpawnObjects:
   - {fileID: 7894309134216318978, guid: 37f06e3b385882046ba55c20da133f77, type: 3}
-  - {fileID: 5155535101963331556, guid: 332b8be183e65544a9cd71f68315e049, type: 3}
+  - {fileID: 5419743590074475685, guid: cf9171091c933a040887499235ac45a8, type: 3}
   SingleSpawnObject: {fileID: 0}
   ForwardOffset: 0.2
 --- !u!1 &1422167766

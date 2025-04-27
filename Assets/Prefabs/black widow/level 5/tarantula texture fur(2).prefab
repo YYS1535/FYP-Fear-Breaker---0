@@ -316,6 +316,46 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7700947153936857276, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7700947153936857276, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7700947153936857276, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -7700947153936857276, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -7700947153936857276, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -7700947153936857276, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -7542053651690809129, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7542053651690809129, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7542053651690809129, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7542053651690809129, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -6195767538593635260, guid: f2849452cf19c6f4694889f44dd55dac, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
