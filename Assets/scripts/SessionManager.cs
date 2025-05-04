@@ -62,6 +62,15 @@ public class SessionManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // Replace "Escape" with the controller button you want to use
+        if (OVRInput.GetDown(OVRInput.Button.Three)) // Oculus X button
+        {
+            EarlyQuit();
+        }
+    }
+
     public void StartTimedSession()
     {
         isTimedSession = true;
