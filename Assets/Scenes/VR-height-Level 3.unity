@@ -49476,7 +49476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {x: 0, y: 0, z: 0}
-  _size: {x: 1105.78, y: 825.83, z: 10.3}
+  _size: {x: 1500.36, y: 1256.9, z: 10.3}
 --- !u!114 &1777187315
 MonoBehaviour:
   m_ObjectHideFlags: 0

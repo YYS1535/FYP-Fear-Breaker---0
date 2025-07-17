@@ -1164,6 +1164,7 @@ GameObject:
   - component: {fileID: 4052471280745006677}
   - component: {fileID: 1326485805586900727}
   - component: {fileID: 2348660928629674238}
+  - component: {fileID: 5003617688227455642}
   m_Layer: 0
   m_Name: ISDK_HandGrabInteraction
   m_TagString: Untagged
@@ -1385,6 +1386,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5003617688227455642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148055414202709211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371dbee8a94872248beca7e797933b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+  amplitude: 0.5
+  frequency: 0.4
+  grabInteractable: {fileID: 4052471280745006677}
 --- !u!1 &4448287833206547954
 GameObject:
   m_ObjectHideFlags: 0
