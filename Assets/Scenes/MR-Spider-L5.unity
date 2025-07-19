@@ -46881,6 +46881,10 @@ MonoBehaviour:
   - {fileID: 3117324567176866675, guid: 687bbee47c391554d80f822fe990d2ec, type: 3}
   SingleSpawnObject: {fileID: 0}
   ForwardOffset: 0.2
+  virtualTablePrefab: {fileID: 997651048183386272, guid: e89b16c023df99e46a615b8e04d28524, type: 3}
+  virtualTableYOffset: 0.1
+  virtualTableDistance: 1.3
+  virtualTableSize: {x: 0.6, y: 0.8, z: 0.6}
 --- !u!4 &1813085370
 Transform:
   m_ObjectHideFlags: 0

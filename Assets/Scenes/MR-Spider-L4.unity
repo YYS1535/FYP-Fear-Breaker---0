@@ -37915,6 +37915,10 @@ MonoBehaviour:
   SpawnObjects: []
   SingleSpawnObject: {fileID: 2327919207813056909, guid: 708c19c0db4d74744902f2094deb91d7, type: 3}
   ForwardOffset: 0.2
+  virtualTablePrefab: {fileID: 997651048183386272, guid: e89b16c023df99e46a615b8e04d28524, type: 3}
+  virtualTableYOffset: 0.1
+  virtualTableDistance: 0.8
+  virtualTableSize: {x: 0.6, y: 0.8, z: 0.6}
 --- !u!1 &1422167766
 GameObject:
   m_ObjectHideFlags: 0
