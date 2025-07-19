@@ -39871,6 +39871,10 @@ MonoBehaviour:
   SpawnObjects: []
   SingleSpawnObject: {fileID: 2333281661405947197, guid: 83c6fd7d4abcc234f9812f7cebf11562, type: 3}
   ForwardOffset: 0.1
+  virtualTablePrefab: {fileID: 997651048183386272, guid: e89b16c023df99e46a615b8e04d28524, type: 3}
+  virtualTableYOffset: 0.1
+  virtualTableDistance: 0.8
+  virtualTableSize: {x: 0.6, y: 0.8, z: 0.6}
 --- !u!1 &1422167766
 GameObject:
   m_ObjectHideFlags: 0
@@ -44192,7 +44196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2296141232796561049, guid: 37c47f9928e3fef4bb9a9ffaafab5526, type: 3}
       propertyPath: hideMesh
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2296141232796561049, guid: 37c47f9928e3fef4bb9a9ffaafab5526, type: 3}
       propertyPath: Colliders
