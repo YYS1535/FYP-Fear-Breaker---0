@@ -48153,7 +48153,8 @@ MonoBehaviour:
   SpawnObjects:
   - {fileID: 1137607335388765633, guid: 7c164512e6fecd94d99cab05de393d5b, type: 3}
   - {fileID: 181493778422414206, guid: be5473e45a9b1c14d8f561acbd612894, type: 3}
-  - {fileID: 3674539772529070533, guid: cb30b8ec2a095054e9d35067aa7f114c, type: 3}
+  - {fileID: 4872715649603803774, guid: f6a99f555a4d4bf48b9a8d43876ffe06, type: 3}
+  - {fileID: 4953632939255493845, guid: ee4a9fec117a5fc4d8cc6c6080cbcb9f, type: 3}
   SingleSpawnObject: {fileID: 0}
   ForwardOffset: 0.2
   virtualTablePrefab: {fileID: 997651048183386272, guid: e89b16c023df99e46a615b8e04d28524, type: 3}
